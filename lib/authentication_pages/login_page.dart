@@ -1,10 +1,20 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:planpilot/authentication_pages/resetpassword_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+
+  final VoidCallback showRegisterPage;
+  final VoidCallback showResetPasswordPage;
+
+  const LoginPage({
+    super.key,
+    required this.showRegisterPage,
+    required this.showResetPasswordPage
+    });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -15,6 +25,11 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   // Method for Signin In
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(), 
+      password: _passwordController.text.trim());
+  }
 
   @override
   void dispose() {
@@ -123,9 +138,23 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Forgot Password?", 
-                        style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.w600, color: Color(0xFF43C6AC)
+                      GestureDetector(
+                        /*
+                        onTap: () {
+                          Navigator.push(
+                            context, 
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ResetPasswordPage(showRegisterPage: widget.showRegisterPage,);
+                              })
+                          );
+                        },
+                        */
+                        onTap: widget.showResetPasswordPage,
+                        child: Text(
+                          "Forgot Password?", 
+                          style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.w600, color: Color(0xFF43C6AC)
+                          ),
                         ),
                       ),
                     ],
@@ -138,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: GestureDetector(
-                    onTap: (){},  //Add onTap method
+                    onTap: signIn,  //Add onTap method
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -167,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     GestureDetector(
-                      onTap: () {},
+                      onTap: widget.showRegisterPage,
                       child: Text(
                         "  Create an account", 
                         style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF43C6AC)

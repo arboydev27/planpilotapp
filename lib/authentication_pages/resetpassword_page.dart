@@ -2,9 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:planpilot/authentication_pages/register_page.dart';
 
 class ResetPasswordPage extends StatefulWidget {
-  const ResetPasswordPage({super.key});
+
+  final VoidCallback showRegisterPage;
+  final VoidCallback showLoginPage;
+
+  const ResetPasswordPage({
+    super.key,
+    required this.showRegisterPage,
+    required this.showLoginPage
+    });
 
   @override
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();
@@ -134,7 +143,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     ),
 
                     GestureDetector(
-                      onTap: () {},
+                      onTap: widget.showRegisterPage,
                       child: Text(
                         "  Create an account", 
                         style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF43C6AC)

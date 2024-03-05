@@ -1,10 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+
+  final VoidCallback showLoginPage;
+
+  const RegisterPage({
+    super.key,
+    required this.showLoginPage
+    });
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -16,7 +23,26 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  // Method for Signing Up
+  // Sign up method
+  // Checks if passwordoConfirmed is true before creating a user
+  Future signUp() async {
+    if (passwordConfirmed()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailController.text.trim(), 
+      password: _passwordController.text.trim()
+      );  
+    }
+  }
+
+// Checks in the Password == ConfrimPassword before creating a new User
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() == _confirmPasswordController.text.trim()) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
   @override
   void dispose() {
@@ -146,11 +172,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 
                 SizedBox(height: 10),
             
-                // Sign in button
+                // Sign Up button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: GestureDetector(
-                    onTap: (){},  //Add onTap method
+                    onTap: signUp,  //Add onTap method
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -179,7 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
 
                     GestureDetector(
-                      onTap: () {},
+                      onTap: widget.showLoginPage,
                       child: Text(
                         "  Login here", 
                         style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF43C6AC)

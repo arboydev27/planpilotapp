@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF0F0F0),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -65,8 +65,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 
                 // Image for the page
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 85),
-                  child: Image.asset("assets/images/Tasks complete.png" ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.asset("assets/images/Tasks complete.png" )
+                  ),
                 ),
             
                 SizedBox(height: 10),
@@ -74,8 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Create Account here
                 Text(
                   "Create Account", 
-                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                  ),
+                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold),
                 ),
             
                 SizedBox(height: 10),
@@ -85,8 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
                     "Welcome aboard! Let's get you started", 
-                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600, color: Color(0xFF191645)
-                    ),
+                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -180,7 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Color(0xFF191645),
+                        color: Theme.of(context).colorScheme.secondary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
@@ -200,8 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
                  children: [
                    Text(
                       "Already a member?", 
-                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                      ),
+                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold),
                     ),
 
                     GestureDetector(

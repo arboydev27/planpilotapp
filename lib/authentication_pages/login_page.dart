@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:planpilot/authentication_pages/resetpassword_page.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -42,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF0F0F0),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -52,8 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                 
                 // Image for the page
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 85),
-                  child: Image.asset("assets/images/Tasks complete.png" ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.asset("assets/images/Tasks complete.png" )
+                  ),
                 ),
             
                 SizedBox(height: 10),
@@ -61,8 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Login here
                 Text(
                   "Login here", 
-                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                  ),
+                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold),
                 ),
             
                 SizedBox(height: 10),
@@ -72,8 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
                     "Hello again! We're glad you're back", 
-                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600, color: Color(0xFF191645)
-                    ),
+                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -171,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Color(0xFF191645),
+                        color: Theme.of(context).colorScheme.secondary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
@@ -191,8 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                  children: [
                    Text(
                       "Not a member yet?", 
-                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                      ),
+                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold),
                     ),
 
                     GestureDetector(

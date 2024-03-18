@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:planpilot/authentication_pages/register_page.dart';
 
 class ResetPasswordPage extends StatefulWidget {
 
@@ -34,7 +33,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF0F0F0),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -44,8 +43,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 
                 // Image for the page
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 85),
-                  child: Image.asset("assets/images/Tasks complete.png" ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    child: Image.asset("assets/images/Tasks complete.png" )
+                  ),
                 ),
             
                 SizedBox(height: 10),
@@ -53,8 +56,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 // Reset Password
                 Text(
                   "Reset Password", 
-                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                  ),
+                  style: GoogleFonts.poppins(fontSize: 42, fontWeight:FontWeight.bold),
                 ),
             
                 SizedBox(height: 10),
@@ -64,8 +66,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
                     "Oops! Looks like you need to reset your password", 
-                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600, color: Color(0xFF191645)
-                    ),
+                    style: GoogleFonts.poppins(fontSize: 20, fontWeight:FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -118,7 +119,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Color(0xFF191645),
+                        color: Theme.of(context).colorScheme.secondary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(
@@ -138,8 +139,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                  children: [
                    Text(
                       "Not a member yet?", 
-                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold, color: Color(0xFF191645)
-                      ),
+                      style: GoogleFonts.poppins(fontSize: 14, fontWeight:FontWeight.bold),
                     ),
 
                     GestureDetector(
